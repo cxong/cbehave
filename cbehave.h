@@ -75,10 +75,11 @@ _feature_over: \
     cbehave_feature_exit(&_old_state, _state); \
 }
 
-#define FEATURE_RETURN(ret) {\
+#define ASSERT(cond, ret) \
+if (!(cond)) {\
     cbehave_feature_return(__FILE__, __LINE__, ret, _state); \
     goto _feature_over; \
-}
+}\
     
 #define feature_idx(idx) _cbehave_feature_##idx
 
@@ -111,7 +112,7 @@ void should_int_equal(int actual, int expected,
                       const char *file, int line);
 void should_str_equal(const char *actual, const char *expected, void *state,
                       const char *file, int line);
-void should_mem_equal(const void *actual, const void *expected, size_t size, void *state, 
+void should_mem_equal(const void *actual, const void *expected, size_t size, void *state,
                       const char *file, int line);
 void should_be_true(int actual, void *state, const char *file, int line);
 

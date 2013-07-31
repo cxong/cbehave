@@ -11,4 +11,4 @@ endif()
 
 #add_subdirectory(examples)
 
-add_library(cbehave STATIC cbehave.h cbehave.c apr_ring.h)
+add_library(cbehave STATIC cbehave.h cbehave.c apr_ring.h rlutil/rlutil.h)

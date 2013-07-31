@@ -87,6 +87,22 @@ if (!(cond)) {\
     should_int_equal((actual), (expected), &_scenario_state, __FILE__, __LINE__); \
 } while(0)
 
+#define SHOULD_INT_GT(val1, val2) do { \
+    should_int_gt((val1), (val2), &_scenario_state, __FILE__, __LINE__); \
+} while(0)
+
+#define SHOULD_INT_LT(val1, val2) do { \
+    should_int_lt((val1), (val2), &_scenario_state, __FILE__, __LINE__); \
+} while(0)
+
+#define SHOULD_INT_GE(val1, val2) do { \
+    should_int_ge((val1), (val2), &_scenario_state, __FILE__, __LINE__); \
+} while(0)
+
+#define SHOULD_INT_LE(val1, val2) do { \
+    should_int_le((val1), (val2), &_scenario_state, __FILE__, __LINE__); \
+} while(0)
+
 #define SHOULD_STR_EQUAL(actual, expected) do { \
     should_str_equal((actual), (expected), &_scenario_state, __FILE__, __LINE__); \
 } while(0)
@@ -110,6 +126,18 @@ int _cbehave_runner(const char *description, const cbehave_feature *features, in
 void should_int_equal(int actual, int expected, 
                       void *state,
                       const char *file, int line);
+void should_int_gt(int val1, int val2,
+                   void *state,
+                   const char *file, int line);
+void should_int_lt(int val1, int val2,
+                   void *state,
+                   const char *file, int line);
+void should_int_ge(int val1, int val2,
+                   void *state,
+                   const char *file, int line);
+void should_int_le(int val1, int val2,
+                   void *state,
+                   const char *file, int line);
 void should_str_equal(const char *actual, const char *expected, void *state,
                       const char *file, int line);
 void should_mem_equal(const void *actual, const void *expected, size_t size, void *state,

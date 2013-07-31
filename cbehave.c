@@ -45,6 +45,70 @@ void should_int_equal(int actual, int expected,
     }
 }
 
+void should_int_gt(int val1, int val2,
+                   void *state,
+                   const char *file, int line) {
+    int *_scenario_state = (int*)state;
+    if ((val1) <= (val2)) {
+        (*_scenario_state) = 1;
+        setColor(RED);
+        printf("\t\t\t%s:%d: Failed: [%d] not greater than [%d].\n",
+                file,
+                line,
+                val1,
+                val2);
+        setColor(GREY);
+    }
+}
+
+void should_int_lt(int val1, int val2,
+                   void *state,
+                   const char *file, int line) {
+    int *_scenario_state = (int*)state;
+    if ((val1) >= (val2)) {
+        (*_scenario_state) = 1;
+        setColor(RED);
+        printf("\t\t\t%s:%d: Failed: [%d] not less than [%d].\n",
+                file,
+                line,
+                val1,
+                val2);
+        setColor(GREY);
+    }
+}
+
+void should_int_ge(int val1, int val2,
+                   void *state,
+                   const char *file, int line) {
+    int *_scenario_state = (int*)state;
+    if ((val1) < (val2)) {
+        (*_scenario_state) = 1;
+        setColor(RED);
+        printf("\t\t\t%s:%d: Failed: [%d] not greater than or equal to [%d].\n",
+                file,
+                line,
+                val1,
+                val2);
+        setColor(GREY);
+    }
+}
+
+void should_int_le(int val1, int val2,
+                   void *state,
+                   const char *file, int line) {
+    int *_scenario_state = (int*)state;
+    if ((val1) > (val2)) {
+        (*_scenario_state) = 1;
+        setColor(RED);
+        printf("\t\t\t%s:%d: Failed: [%d] not less than or equal to [%d].\n",
+                file,
+                line,
+                val1,
+                val2);
+        setColor(GREY);
+    }
+}
+
 void should_str_equal(const char *actual, const char *expected, void *state,
                       const char *file, int line) {
 

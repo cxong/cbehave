@@ -23,6 +23,7 @@ CMakeFiles/
 Makefile
 CMakeScripts/
 *.build/
+CTestTestfile.cmake
 
 # Visual Studio
 *.vcxproj

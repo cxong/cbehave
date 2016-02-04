@@ -25,36 +25,29 @@ int table_row_count(const database_conn *conn,
 
 FEATURE(1, "Get the total count of employees")
     SCENARIO("Get the total count of employees")
-        GIVEN("The db connection is ready and there are 5 employees in total");
+        GIVEN("The db connection is ready")
             CBEHAVE_RETV_RETURN(connect_to_database, 0x1234);
+        AND("there are 5 employees in total")
             CBEHAVE_ARG_RETURN(table_row_count, 5);
             CBEHAVE_RETV_RETURN(table_row_count, 0);
-        GIVEN_END
 
-        WHEN("We call get_total_count_of_employee");
+        WHEN("We call get_total_count_of_employee")
             int count = get_total_count_of_employee();
-            
-        WHEN_END
 
         THEN("The total count of employees we read from db should be 5")
             SHOULD_INT_EQUAL(count, 5);
-        THEN_END
 
     SCENARIO_END
 
     SCENARIO("We should get -1 from the execution when the db connection is unavailable")
         GIVEN("The db connection is unavailable")
             CBEHAVE_RETV_RETURN(connect_to_database, NULL);
-        GIVEN_END
 
-        WHEN("We call get_total_count_of_employee");
+        WHEN("We call get_total_count_of_employee")
             int count = get_total_count_of_employee();
-            
-        WHEN_END
 
         THEN("We won't get the count, but -1 for the unavailable db connection")
             SHOULD_INT_EQUAL(count, -1);
-        THEN_END
     SCENARIO_END
 
 FEATURE_END

@@ -1,8 +1,7 @@
+include_directories(..)
+
 add_executable(calculator_test calculator_test.c calculator.c)
 target_link_libraries(calculator_test cbehave)
-
-add_executable(calculator_test_c90 calculator_test_c90.c calculator.c)
-target_link_libraries(calculator_test_c90 cbehave)
 
 add_executable(mock_test mock_test.c)
 target_link_libraries(mock_test cbehave)

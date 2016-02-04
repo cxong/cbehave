@@ -16,16 +16,13 @@ FEATURE(1, "Addition")
             int a = 11;
             int b = 12;
             int r = 0;
-        GIVEN_END
 
         WHEN("we invoke add function")
             r = add(a, b);
-        WHEN_END
 
         THEN("We should get the result 23")
             SHOULD_INT_EQUAL(r, 23);
             SHOULD_BE_TRUE(r == 23);
-        THEN_END
 
     SCENARIO_END
 FEATURE_END
@@ -39,16 +36,12 @@ FEATURE(2, "Subtraction")
             int b = 12;
             int c = 13;
             int d = 11;
-        GIVEN_END
 
         WHEN("we invoke sub function")
-
-        WHEN_END
 
         THEN("We should get the result -1 and 2")
             SHOULD_INT_EQUAL(subtract(a, b), -1);
             SHOULD_INT_EQUAL(subtract(c, d), 2);
-        THEN_END
 
     SCENARIO_END
 FEATURE_END
@@ -58,15 +51,11 @@ FEATURE(3, "Divide")
         GIVEN("two numbers (a 12), (b 6)")
             int a = 12;
             int b = 6;
-        GIVEN_END
 
         WHEN("we invoke divide function")
 
-        WHEN_END
-
         THEN("We should get the result 2")
             SHOULD_INT_EQUAL(divide(a, b), 2);
-        THEN_END
 
     SCENARIO_END
 
@@ -74,15 +63,11 @@ FEATURE(3, "Divide")
         GIVEN("two numbers (a 0), (b 12)")
             int a = 0;
             int b = 12;
-        GIVEN_END
 
         WHEN("we invoke divide function")
 
-        WHEN_END
-
         THEN("We should get the result 0")
             SHOULD_INT_EQUAL(divide(a, b), 0);
-        THEN_END
 
     SCENARIO_END
 FEATURE_END

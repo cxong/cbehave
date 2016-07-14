@@ -36,6 +36,7 @@ Win32/
 
 # Xcode
 *.xcodeproj/
+Debug/
 
 # Binaries
 examples/*_test

@@ -35,7 +35,7 @@ int bar_invoke_foo_multi_times(int *outparameter) {
 }
 
 
-FEATURE(1, "CBehave mock macros test")
+FEATURE(mock_macros, "CBehave mock macros test")
     SCENARIO("Invoke bar_invoke_foo_once, within which foo would be invoked only once")
         int i;
         int ret;
@@ -115,7 +115,7 @@ FEATURE_END
 
 int main() {
     cbehave_feature mock_test_features[] = {
-        {feature_idx(1)},
+        TEST_FEATURE(mock_macros)
     };
 
     return cbehave_runner("Mock test Features are as belows:", mock_test_features);

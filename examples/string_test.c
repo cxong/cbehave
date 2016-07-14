@@ -7,7 +7,7 @@
 #include <errno.h>
 #include "cbehave.h"
 
-FEATURE(1, "strstr")
+FEATURE(strstr, "strstr")
     SCENARIO("The strstr finds the first occurrence of the substring in the source string")
 
         GIVEN("A source string: Lionel Messi is a great football player")
@@ -37,7 +37,7 @@ FEATURE_END
 
 int main() {
     cbehave_feature strstr_features[] = {
-        {feature_idx(1)},
+        TEST_FEATURE(strstr),
     };
 
     return cbehave_runner("Strstr Features are as belows:", strstr_features);

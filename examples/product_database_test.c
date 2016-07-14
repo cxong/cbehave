@@ -23,7 +23,7 @@ int table_row_count(const database_conn *conn,
     return (int)CBEHAVE_MOCK_RETV();
 }
 
-FEATURE(1, "Get the total count of employees")
+FEATURE(employee_count, "Get the total count of employees")
     SCENARIO("Get the total count of employees")
         GIVEN("The db connection is ready")
             CBEHAVE_RETV_RETURN(connect_to_database, 0x1234);
@@ -54,7 +54,7 @@ FEATURE_END
 
 int main() {
     cbehave_feature product_db_features[] = {
-        {feature_idx(1)},
+        TEST_FEATURE(employee_count),
     };
 
     return cbehave_runner("Product Database Features are as belows:", product_db_features);

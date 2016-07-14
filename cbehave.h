@@ -118,7 +118,7 @@ if (!(cond)) {\
     goto _feature_over; \
 }\
     
-#define feature_idx(idx) _cbehave_feature_##idx
+#define TEST_FEATURE(name) {_cbehave_feature_##name}
 
 #define SHOULD_INT_EQUAL(actual, expected) do { \
     should_int_equal((actual), (expected), &_scenario_state, __FILE__, __LINE__); \

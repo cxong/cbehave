@@ -8,8 +8,8 @@
 #include <errno.h>
 #include "cbehave.h"
 
-FEATURE(1, "Text Editor - Open Exsited File")
-    SCENARIO("Open an Exsited File and write something to it")
+FEATURE(open_existing, "Text Editor - Open Existing File")
+    SCENARIO("Open an existing file and write something to it")
         FILE *fp = NULL;
         char *buf = "Hello Cbehave!";
         GIVEN("A file named foo.txt")
@@ -18,6 +18,7 @@ FEATURE(1, "Text Editor - Open Exsited File")
         WHEN("we open the file and write something to it")
             fp = fopen("foo.txt", "r+");
             ASSERT(fp, errno);
+            fputs(buf, fp);
 
         THEN("We should see [Hello Cbehave] has been written into foo.txt")
             if (fp)
@@ -27,7 +28,7 @@ FEATURE_END
 
 int main() {
     cbehave_feature editor_features[] = {
-        {feature_idx(1)},
+        TEST_FEATURE(open_existing),
     };
 
     return cbehave_runner("Text Editor Features are as belows:", editor_features);

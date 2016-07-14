@@ -2,6 +2,15 @@ cmake_minimum_required(VERSION 2.8)
 project(cbehave C)
 
 include_directories(..)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/.. ${CMAKE_CURRENT_BINARY_DIR}/..)
+
+if(MSVC)
+	add_definitions(-wd"4127" -wd"4102" -wd"4996")
+else()
+	if(NOT BEOS AND NOT HAIKU)
+		add_definitions(-Wno-unused-label)
+	endif()
+endif()
 
 add_executable(calculator_test calculator_test.c calculator.c)
 target_link_libraries(calculator_test cbehave)

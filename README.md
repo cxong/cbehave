@@ -9,7 +9,7 @@ A demonstration using real C code:
     int add(int a, int b);
 
     // Step 2: describe behaviour and the function calls
-    FEATURE(1, "Addition")
+    FEATURE(addition, "Addition")
         SCENARIO("Add two numbers")
             GIVEN("we have two numbers 50 and 70")
                 int a = 50;
@@ -32,7 +32,7 @@ A demonstration using real C code:
     int main()
     {
         cbehave_feature calculator_features[] = {
-            {feature_idx(1)}
+            TEST_FEATURE(addition)
         };
 
         return cbehave_runner(

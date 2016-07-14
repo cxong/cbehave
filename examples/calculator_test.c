@@ -9,7 +9,7 @@ extern int subtract(int a, int b);
 extern int multiply(int a, int b);
 extern int divide(int a, int b);
 
-FEATURE(1, "Addition")
+FEATURE(addition, "Addition")
     SCENARIO("Add two numbers")
 
         GIVEN("two numbers (a 11) and (b 12)")
@@ -27,7 +27,7 @@ FEATURE(1, "Addition")
     SCENARIO_END
 FEATURE_END
 
-FEATURE(2, "Subtraction")
+FEATURE(subtraction, "Subtraction")
     SCENARIO("Subtract between two numbers")
 
         GIVEN("two pair of numbers (a 11), (b 12) and "
@@ -46,7 +46,7 @@ FEATURE(2, "Subtraction")
     SCENARIO_END
 FEATURE_END
 
-FEATURE(3, "Divide")
+FEATURE(divide, "Divide")
     SCENARIO("Divide between two numbers")
         GIVEN("two numbers (a 12), (b 6)")
             int a = 12;
@@ -74,9 +74,9 @@ FEATURE_END
 
 int main() {
     cbehave_feature calculator_features[] = {
-        {feature_idx(1)},
-        {feature_idx(2)},
-        {feature_idx(3)},
+        TEST_FEATURE(addition),
+        TEST_FEATURE(subtraction),
+        TEST_FEATURE(divide),
     };
 
     return cbehave_runner("Calculator Features are as belows:", calculator_features);

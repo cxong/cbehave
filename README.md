@@ -1,5 +1,6 @@
 cbehave - A Behavior Driven Development Framework for C
 =======
+[![Build Status](https://travis-ci.org/cxong/cbehave.svg?branch=master)](https://travis-ci.org/cxong/cbehave)
 
 A demonstration using real C code:
 

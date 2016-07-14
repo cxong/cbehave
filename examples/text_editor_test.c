@@ -12,15 +12,14 @@ FEATURE(open_existing, "Text Editor - Open Existing File")
     SCENARIO("Open an existing file and write something to it")
         FILE *fp = NULL;
         char *buf = "Hello Cbehave!";
-        GIVEN("A file named foo.txt")
-        GIVEN_END
+        GIVEN("A file")
+			fp = tmpfile();
 
         WHEN("we open the file and write something to it")
-            fp = fopen("foo.txt", "r+");
             ASSERT(fp, errno);
             fputs(buf, fp);
 
-        THEN("We should see [Hello Cbehave] has been written into foo.txt")
+        THEN("We should see [Hello Cbehave] has been written into it")
             if (fp)
                 fclose(fp);
     SCENARIO_END

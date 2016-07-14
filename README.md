@@ -40,12 +40,6 @@ A demonstration using real C code:
             calculator_features);
     }
 
-Recent News
------------
- - 2013-04-02 fork a copy to https://github.com/bigwhite/cbehave.git.
- - 2012-04-16 cbehave 0.2.0 released.
- - 2011-08-14 cbehave 0.1.0 version released.
-
 Introduction
 -------------
 CBehave - A Behavior Driven Development Framework for C.
@@ -57,50 +51,8 @@ Main Features
  - use classical "given-when-then" template to describe behavior scenarios
  - support mock
 
-A Typical Example
+Example Output
 -------------
-
-An example:
-
-    #include <stdio.h>
-    #include <errno.h>
-    #include "cbehave.h"
-
-    FEATURE(1, "strstr")
-      SCENARIO("The strstr finds the first occurrence of the substring in the source string")
-
-         GIVEN("A source string: [Lionel Messi is a great football player]")
-             char *str = "Lionel Messi is a great football player";
-
-         WHEN("we use strstr to find the first occurrence of [football]")
-             char *p = strstr(str, "football");
-
-         THEN("We should get the string: [football player]")
-             SHOULD_STR_EQUAL(p, "football player");
-     SCENARIO_END
-
-     SCENARIO("If strstr could not find the first occurrence of the substring, it will return NULL")
-
-        GIVEN("A source string: FC Barcelona is a great football club.")
-            char *str = "FC Barcelona is a great football club";
-
-        WHEN("we use strstr to find the first occurrence of [AC Milan]")
-            char *p = strstr(buf, "AC Milan");
-
-        THEN("We should get no string but a NULL")
-            SHOULD_STR_EQUAL(p, NULL);
-     SCENARIO_END
-    FEATURE_END
-
-    int main() {
-        cbehave_feature strstr_features[] = {
-           {feature_idx(1)},
-        };
-
-        return cbehave_runner("Strstr Features are as belows:", strstr_features);
-    }
-
-The result of the example could be seen like：
 
    *******************************************************************
        CBEHAVE -- A Behavior Driven Development Framework for C
@@ -122,11 +74,13 @@ The result of the example could be seen like：
 
 Build
 ------
- - Download the source code package
- - unzip the package
- - cmake cbehave
 
+To run the examples:
 
-User Guide
--------------
-For more information, please open and read the project wiki. cbehave user guide is ready for you.
+ - Clone the project
+ - cmake cbehave/examples
+
+To use cbehave in your CMake project:
+
+- include the cbehave directory
+- link against `cbehave`

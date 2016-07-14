@@ -1,6 +1,3 @@
-cmake_minimum_required(VERSION 2.8)
-project(cbehave C)
-
 include_directories(.)
 
 if(MSVC)
@@ -10,7 +7,5 @@ else()
 		add_definitions(-Wno-unused-label)
 	endif()
 endif()
-
-#add_subdirectory(examples)
 
 add_library(cbehave STATIC cbehave.h cbehave.c apr_ring.h rlutil/rlutil.h)

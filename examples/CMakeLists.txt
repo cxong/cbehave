@@ -1,3 +1,6 @@
+cmake_minimum_required(VERSION 2.8)
+project(cbehave C)
+
 include_directories(..)
 
 add_executable(calculator_test calculator_test.c calculator.c)

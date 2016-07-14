@@ -10,7 +10,7 @@ else()
 	add_definitions(-Wno-unused-label)
 	if("${CMAKE_C_COMPILER_ID}" STREQUAL "Clang")
 	else()
-		add_definitions(-Wnopointer-to-int-cast)
+		add_definitions(-Wno-pointer-to-int-cast)
 	endif()
 endif()
 

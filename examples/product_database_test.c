@@ -52,10 +52,5 @@ FEATURE(employee_count, "Get the total count of employees")
 
 FEATURE_END
 
-int main() {
-    cbehave_feature product_db_features[] = {
-        TEST_FEATURE(employee_count),
-    };
-
-    return cbehave_runner("Product Database Features are as belows:", product_db_features);
-}
+CBEHAVE_RUN(
+	"Product Database Features are as below:", TEST_FEATURE(employee_count))

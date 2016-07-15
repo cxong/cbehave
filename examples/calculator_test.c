@@ -72,12 +72,7 @@ FEATURE(divide, "Divide")
     SCENARIO_END
 FEATURE_END
 
-int main() {
-    cbehave_feature calculator_features[] = {
-        TEST_FEATURE(addition),
-        TEST_FEATURE(subtraction),
-        TEST_FEATURE(divide),
-    };
-
-    return cbehave_runner("Calculator Features are as belows:", calculator_features);
-}
+CBEHAVE_RUN(
+	"Calculator Features are as below:",
+	TEST_FEATURE(addition), TEST_FEATURE(subtraction), TEST_FEATURE(divide)
+)

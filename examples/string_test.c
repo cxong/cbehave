@@ -35,10 +35,4 @@ FEATURE(strstr, "strstr")
 
 FEATURE_END
 
-int main() {
-    cbehave_feature strstr_features[] = {
-        TEST_FEATURE(strstr),
-    };
-
-    return cbehave_runner("Strstr Features are as belows:", strstr_features);
-}
+CBEHAVE_RUN("Strstr Features are as below:", TEST_FEATURE(strstr))

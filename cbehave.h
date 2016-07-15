@@ -156,6 +156,12 @@ if (!(cond)) {\
     should_be_bool((actual), false, &_scenario_state, __FILE__, __LINE__); \
 } while(0)
 
+#define CBEHAVE_RUN(_description, ...)\
+int main(int argc, char *argv[]) {\
+	cbehave_feature _cfeatures[] = {__VA_ARGS__};\
+	return cbehave_runner(_description, _cfeatures);\
+}
+
 #define cbehave_runner(str, features) \
     _cbehave_runner(str, features, sizeof(features)/sizeof(features[0]))
 

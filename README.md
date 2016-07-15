@@ -30,16 +30,7 @@ A demonstration using real C code:
     }
 
     // Step 4: run tests and watch them fail (and succeed later)
-    int main()
-    {
-        cbehave_feature calculator_features[] = {
-            TEST_FEATURE(addition)
-        };
-
-        return cbehave_runner(
-            "Calculator Features are as belows:",
-            calculator_features);
-    }
+    CBEHAVE_RUN("Calculator Features are as below:", TEST_FEATURE(addition))
 
 Introduction
 -------------

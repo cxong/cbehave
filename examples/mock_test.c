@@ -113,10 +113,4 @@ FEATURE(mock_macros, "CBehave mock macros test")
     SCENARIO_END
 FEATURE_END
 
-int main() {
-    cbehave_feature mock_test_features[] = {
-        TEST_FEATURE(mock_macros)
-    };
-
-    return cbehave_runner("Mock test Features are as belows:", mock_test_features);
-}
+CBEHAVE_RUN("Mock test Features are as below:", TEST_FEATURE(mock_macros))

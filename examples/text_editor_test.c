@@ -25,10 +25,4 @@ FEATURE(open_existing, "Text Editor - Open Existing File")
     SCENARIO_END
 FEATURE_END
 
-int main() {
-    cbehave_feature editor_features[] = {
-        TEST_FEATURE(open_existing),
-    };
-
-    return cbehave_runner("Text Editor Features are as belows:", editor_features);
-}
+CBEHAVE_RUN("Text Editor Features are as below:", TEST_FEATURE(open_existing))

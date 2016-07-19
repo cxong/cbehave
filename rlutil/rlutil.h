@@ -189,6 +189,8 @@ enum {
  * Consts: ANSI escape strings
  *
  * ANSI_CLS                - Clears screen
+ * ANSI_CONSOLE_TITLE_PRE  - Prefix for changing the window title, print the window title in between
+ * ANSI_CONSOLE_TITLE_POST - Suffix for changing the window title, print the window title in between
  * ANSI_ATTRIBUTE_RESET    - Resets all attributes
  * ANSI_CURSOR_HIDE        - Hides the cursor
  * ANSI_CURSOR_SHOW        - Shows the cursor
@@ -218,35 +220,37 @@ enum {
  * ANSI_BACKGROUND_CYAN    - Cyan background
  * ANSI_BACKGROUND_WHITE   - White background
  */
-const RLUTIL_STRING_T ANSI_CLS                = "\033[2J\033[3J";
-const RLUTIL_STRING_T ANSI_ATTRIBUTE_RESET    = "\033[0m";
-const RLUTIL_STRING_T ANSI_CURSOR_HIDE        = "\033[?25l";
-const RLUTIL_STRING_T ANSI_CURSOR_SHOW        = "\033[?25h";
-const RLUTIL_STRING_T ANSI_CURSOR_HOME        = "\033[H";
-const RLUTIL_STRING_T ANSI_BLACK              = "\033[22;30m";
-const RLUTIL_STRING_T ANSI_RED                = "\033[22;31m";
-const RLUTIL_STRING_T ANSI_GREEN              = "\033[22;32m";
-const RLUTIL_STRING_T ANSI_BROWN              = "\033[22;33m";
-const RLUTIL_STRING_T ANSI_BLUE               = "\033[22;34m";
-const RLUTIL_STRING_T ANSI_MAGENTA            = "\033[22;35m";
-const RLUTIL_STRING_T ANSI_CYAN               = "\033[22;36m";
-const RLUTIL_STRING_T ANSI_GREY               = "\033[22;37m";
-const RLUTIL_STRING_T ANSI_DARKGREY           = "\033[01;30m";
-const RLUTIL_STRING_T ANSI_LIGHTRED           = "\033[01;31m";
-const RLUTIL_STRING_T ANSI_LIGHTGREEN         = "\033[01;32m";
-const RLUTIL_STRING_T ANSI_YELLOW             = "\033[01;33m";
-const RLUTIL_STRING_T ANSI_LIGHTBLUE          = "\033[01;34m";
-const RLUTIL_STRING_T ANSI_LIGHTMAGENTA       = "\033[01;35m";
-const RLUTIL_STRING_T ANSI_LIGHTCYAN          = "\033[01;36m";
-const RLUTIL_STRING_T ANSI_WHITE              = "\033[01;37m";
-const RLUTIL_STRING_T ANSI_BACKGROUND_BLACK   = "\033[40m";
-const RLUTIL_STRING_T ANSI_BACKGROUND_RED     = "\033[41m";
-const RLUTIL_STRING_T ANSI_BACKGROUND_GREEN   = "\033[42m";
-const RLUTIL_STRING_T ANSI_BACKGROUND_YELLOW  = "\033[43m";
-const RLUTIL_STRING_T ANSI_BACKGROUND_BLUE    = "\033[44m";
-const RLUTIL_STRING_T ANSI_BACKGROUND_MAGENTA = "\033[45m";
-const RLUTIL_STRING_T ANSI_BACKGROUND_CYAN    = "\033[46m";
-const RLUTIL_STRING_T ANSI_BACKGROUND_WHITE   = "\033[47m";
+static const RLUTIL_STRING_T ANSI_CLS                = "\033[2J\033[3J";
+static const RLUTIL_STRING_T ANSI_CONSOLE_TITLE_PRE  = "\033]0;";
+static const RLUTIL_STRING_T ANSI_CONSOLE_TITLE_POST = "\007";
+static const RLUTIL_STRING_T ANSI_ATTRIBUTE_RESET    = "\033[0m";
+static const RLUTIL_STRING_T ANSI_CURSOR_HIDE        = "\033[?25l";
+static const RLUTIL_STRING_T ANSI_CURSOR_SHOW        = "\033[?25h";
+static const RLUTIL_STRING_T ANSI_CURSOR_HOME        = "\033[H";
+static const RLUTIL_STRING_T ANSI_BLACK              = "\033[22;30m";
+static const RLUTIL_STRING_T ANSI_RED                = "\033[22;31m";
+static const RLUTIL_STRING_T ANSI_GREEN              = "\033[22;32m";
+static const RLUTIL_STRING_T ANSI_BROWN              = "\033[22;33m";
+static const RLUTIL_STRING_T ANSI_BLUE               = "\033[22;34m";
+static const RLUTIL_STRING_T ANSI_MAGENTA            = "\033[22;35m";
+static const RLUTIL_STRING_T ANSI_CYAN               = "\033[22;36m";
+static const RLUTIL_STRING_T ANSI_GREY               = "\033[22;37m";
+static const RLUTIL_STRING_T ANSI_DARKGREY           = "\033[01;30m";
+static const RLUTIL_STRING_T ANSI_LIGHTRED           = "\033[01;31m";
+static const RLUTIL_STRING_T ANSI_LIGHTGREEN         = "\033[01;32m";
+static const RLUTIL_STRING_T ANSI_YELLOW             = "\033[01;33m";
+static const RLUTIL_STRING_T ANSI_LIGHTBLUE          = "\033[01;34m";
+static const RLUTIL_STRING_T ANSI_LIGHTMAGENTA       = "\033[01;35m";
+static const RLUTIL_STRING_T ANSI_LIGHTCYAN          = "\033[01;36m";
+static const RLUTIL_STRING_T ANSI_WHITE              = "\033[01;37m";
+static const RLUTIL_STRING_T ANSI_BACKGROUND_BLACK   = "\033[40m";
+static const RLUTIL_STRING_T ANSI_BACKGROUND_RED     = "\033[41m";
+static const RLUTIL_STRING_T ANSI_BACKGROUND_GREEN   = "\033[42m";
+static const RLUTIL_STRING_T ANSI_BACKGROUND_YELLOW  = "\033[43m";
+static const RLUTIL_STRING_T ANSI_BACKGROUND_BLUE    = "\033[44m";
+static const RLUTIL_STRING_T ANSI_BACKGROUND_MAGENTA = "\033[45m";
+static const RLUTIL_STRING_T ANSI_BACKGROUND_CYAN    = "\033[46m";
+static const RLUTIL_STRING_T ANSI_BACKGROUND_WHITE   = "\033[47m";
 // Remaining colors not supported as background colors
 
 /**
@@ -354,7 +358,7 @@ RLUTIL_INLINE int getkey(void) {
 				case 75: return KEY_NUMPAD4;
 				case 77: return KEY_NUMPAD6;
 				case 79: return KEY_NUMPAD1;
-				case 80: return KEY_NUMPAD4;
+				case 80: return KEY_NUMPAD2;
 				case 81: return KEY_NUMPAD3;
 				case 82: return KEY_NUMPAD0;
 				case 83: return KEY_NUMDEL;
@@ -489,7 +493,7 @@ RLUTIL_INLINE void setBackgroundColor(int c) {
 ///
 /// See <Color Codes>
 /// See <resetColor>
-RLUTIL_INLINE int saveDefaultColor() {
+RLUTIL_INLINE int saveDefaultColor(void) {
 #if defined(_WIN32) && !defined(RLUTIL_USE_ANSI)
 	static char initialized = 0; // bool
 	static WORD attributes;
@@ -513,7 +517,7 @@ RLUTIL_INLINE int saveDefaultColor() {
 /// See <Color Codes>
 /// See <setColor>
 /// See <saveDefaultColor>
-RLUTIL_INLINE void resetColor() {
+RLUTIL_INLINE void resetColor(void) {
 #if defined(_WIN32) && !defined(RLUTIL_USE_ANSI)
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (WORD)saveDefaultColor());
 #else
@@ -710,6 +714,22 @@ RLUTIL_INLINE void anykey(RLUTIL_STRING_T msg) {
 		RLUTIL_PRINT(msg);
 #endif // __cplusplus
 	getch();
+}
+
+RLUTIL_INLINE void setConsoleTitle(RLUTIL_STRING_T title) {
+	const char * true_title =
+#ifdef __cplusplus
+		title.c_str();
+#else // __cplusplus
+		title;
+#endif // __cplusplus
+#if defined(_WIN32) && !defined(RLUTIL_USE_ANSI)
+	SetConsoleTitleA(true_title);
+#else
+	RLUTIL_PRINT(ANSI_CONSOLE_TITLE_PRE);
+	RLUTIL_PRINT(true_title);
+	RLUTIL_PRINT(ANSI_CONSOLE_TITLE_POST);
+#endif // defined(_WIN32) && !defined(RLUTIL_USE_ANSI)
 }
 
 // Classes are here at the end so that documentation is pretty.
